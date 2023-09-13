@@ -1,9 +1,12 @@
 <?php
-// Start a session
 session_start();
-
-// Database connection details (modify these with your database credentials)
-$host = "localhost";
+if (isset($_SESSION['user_full_name'])) {
+    echo "User Full Name: " . $_SESSION['user_full_name'];
+} else {
+    echo "User Full Name is not set.";
+}
+// Database connection details
+$host = "localhost"; // Your database host
 $username = "root";
 $password = "";
 $database = "register";
@@ -16,27 +19,48 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Check if the user is logged in (assuming you have a login system)
-if (isset($_SESSION["username"])) {
-    $logged_in_username = $_SESSION["username"];
+// SQL code to create the "book_form" table
+$sql = "CREATE TABLE IF NOT EXISTS book_form (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    full_name VARCHAR(255) NOT NULL,
+    location VARCHAR(255) NOT NULL,
+    guests INT NOT NULL,
+    arrivals DATE NOT NULL,
+    leaving DATE NOT NULL
+)";
 
-    // Query the database to fetch the user's full name
-    $query = "SELECT full_name FROM users WHERE username = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("s", $logged_in_username);
-    $stmt->execute();
-    $stmt->bind_result($full_name);
+// Execute the SQL code to create the table
+if ($conn->query($sql) === TRUE) {
+    echo "Table 'book_form' created successfully.<br>";
+} else {
+    echo "Error creating table: " . $conn->error . "<br>";
+}
 
-    if ($stmt->fetch()) {
-        // Retrieve the full name
-        $user_full_name = $full_name;
+// Handle form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $full_name = $_POST["full_name"];
+    $location = $_POST["location"];
+    $guests = $_POST["guests"];
+    $arrivals = $_POST["arrivals"];
+    $leaving = $_POST["leaving"];
+
+    // Insert form data into the database
+    $insert_query = "INSERT INTO book_form (full_name, location, guests, arrivals, leaving) VALUES (?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($insert_query);
+    $stmt->bind_param("ssiss", $full_name, $location, $guests, $arrivals, $leaving);
+
+    if ($stmt->execute()) {
+        // Insertion was successful
+        echo "Booking successful!";
+    } else {
+        // Insertion failed
+        echo "Error: " . $stmt->error;
     }
 
     // Close the database connection
     $stmt->close();
-} else {
-    // Handle the case where the user is not logged in or the session variable is not set
-    // You can redirect the user to a login page or take appropriate action here
-    echo "Please log in to access this page.";
 }
+
+// Close the database connection
+$conn->close();
 ?>

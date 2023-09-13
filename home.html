@@ -1,3 +1,20 @@
+<?php
+session_start();
+
+if (!isset($_SESSION["user_id"])) {
+    // User is not logged in, redirect to the login page
+    header("Location: login.php");
+    exit();
+}
+
+// If the user is logged in, you can access user data from the session
+$user_id = $_SESSION["user_id"];
+$username = $_SESSION["username"];
+$full_name = $_SESSION["full_name"];
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -249,3 +266,5 @@
 </body>
 
 </html>
+
+?>

@@ -1,5 +1,8 @@
 <?php
-session_start();
+
+require_once('session.php');
+
+
 if (isset($_SESSION['user_full_name'])) {
     echo "User Full Name: " . $_SESSION['user_full_name'];
 } else {
@@ -44,10 +47,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $arrivals = $_POST["arrivals"];
     $leaving = $_POST["leaving"];
 
+    // Fetch user's full name from the 'users' table based on their ID
+    if (isset($_SESSION['user_id'])) {
+        $user_id = $_SESSION['user_id'];
+        $fetch_full_name_query = "SELECT full_name FROM users WHERE id = ?";
+        $stmt = $conn->prepare($fetch_full_name_query);
+        $stmt->bind_param("i", $user_id);
+
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+            $user_full_name = $row['full_name'];
+        } else {
+            // Handle the error
+            $user_full_name = "Unknown User";
+        }
+    } else {
+        // User ID is not set in the session
+        $user_full_name = "Unknown User";
+    }
+
     // Insert form data into the database
     $insert_query = "INSERT INTO book_form (full_name, location, guests, arrivals, leaving) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($insert_query);
-    $stmt->bind_param("ssiss", $full_name, $location, $guests, $arrivals, $leaving);
+    $stmt->bind_param("ssiss", $user_full_name, $location, $guests, $arrivals, $leaving);
 
     if ($stmt->execute()) {
         // Insertion was successful
@@ -63,4 +86,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 // Close the database connection
 $conn->close();
+
 ?>

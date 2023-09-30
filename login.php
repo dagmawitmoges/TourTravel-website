@@ -13,6 +13,9 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// Start a new session or resume the existing session
+session_start();
+
 // Handle login form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
@@ -28,9 +31,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
         if (password_verify($password, $row["password"])) {
-            // echo "Login successful. Welcome, " . $username . ".";
-            header('Location:home.html');
+            // Store user information in the session
+            $_SESSION["username"] = $username;
+            
+            // Set the user's full name in the session
+            $_SESSION["user_full_name"] = $row["full_name"];
+            
             // Redirect to a dashboard or another page after successful login
+            header('Location: home.html');
+            exit; // Important to terminate script execution after redirection
         } else {
             echo "Invalid password. Please try again.";
         }

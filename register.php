@@ -1,19 +1,15 @@
 <?php
-// Database connection details (modify these with your database credentials)
 $host = "localhost";
 $username = "root";
 $password = "";
 $database = "register";
 
-// Create a database connection
 $conn = new mysqli($host, $username, $password, $database);
 
-// Check the connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Create the users table if it doesn't exist
 $create_table_query = "CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     full_name VARCHAR(255) NOT NULL,
@@ -28,7 +24,6 @@ if ($conn->query($create_table_query) === TRUE) {
     echo "Error creating table: " . $conn->error . "<br>";
 }
 
-// Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $full_name = $_POST["full_name"];
     $email = $_POST["email"]; 
@@ -45,7 +40,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows > 0) {
         echo "Username already exists. Please choose another.";
     } else {
-        // Insert user data into the database
         $insert_query = "INSERT INTO users (full_name,email, username, password) VALUES (?, ?, ?,?)";
         $insert_stmt = $conn->prepare($insert_query);
         $insert_stmt->bind_param("ssss", $full_name,$email, $username, $password);
@@ -57,11 +51,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // Close prepared statements
     $check_stmt->close();
     $insert_stmt->close();
 }
 
-// Close the database connection
 $conn->close();
 ?>

@@ -49,7 +49,6 @@
                     <input type="text" placeholder="Full Name" name="full_name" value="<?php echo $user_full_name; ?>">
                     <span>Package:</span>
                     <?php
-                    // Check if the "package_title" query parameter is set in the URL
                     $location = isset($_GET['package_title']) ? htmlspecialchars($_GET['package_title']) : '';
                     ?>
                     <input type="text" placeholder="Place you want to visit" name="location" value="<?php echo $location; ?>">
@@ -60,7 +59,7 @@
                 </div>
                 <div class="inputBox">
                     <span>Arrival Date:</span>
-                    <input type="date" name="arrivals">
+                    <input  type="date" name="arrivals" required>
                 </div>
                 <div class="inputBox">
                     <span>Leaving Date:</span>
@@ -73,9 +72,7 @@
     </section>
 </div>
 
-<!-- Footer -->
 <section class="footer">
-    <!-- ... (your footer content) ... -->
 </section>
 
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>

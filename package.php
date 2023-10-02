@@ -27,7 +27,6 @@
         <h1 class="heading-title">Top Destinations</h1>
         <div class="box-container">
             <?php
-            // Database Connection
             $hostname = "localhost";
             $username = "root";
             $password = "";
@@ -35,12 +34,10 @@
 
             $conn = new mysqli($hostname, $username, $password, $database);
 
-            // Check the connection
             if ($conn->connect_error) {
                 die("Connection Failed: " . $conn->connect_error);
             }
 
-            // Create the 'Packages' table if it doesn't exist
             $createTableQuery = "CREATE TABLE IF NOT EXISTS Packages (
                 ID INT AUTO_INCREMENT PRIMARY KEY,
                 Title VARCHAR(255) NOT NULL,
@@ -48,23 +45,21 @@
                 Image_path VARCHAR(255)
             )";
 
-            // SQL Query To Retrieve Packages
             $sql = "SELECT * FROM Packages";
             $result = $conn->query($sql);
 
-            // Check if query executed successfully
             if (!$result) {
                 die("Query failed: " . $conn->error);
             }
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    // Extract Package Details
+                   
                     $title = $row["Title"];
                     $description = $row["Description"];
                     $imagePath = $row["Image_path"];
 
-                    // Display Package Information In A Box
+                    // Display Package Informations
                     echo '<div class="box">';
                     echo '<div class="image">';
                     echo '<img src="' . $imagePath . '" alt="">';
@@ -82,7 +77,6 @@
                 echo "No packages found.";
             }
 
-            // Close the database connection
             $conn->close();
             ?>
         </div>
@@ -90,7 +84,6 @@
     </section>
     <section class="footer">
         <div class="box-container">
-            <!-- Footer content here -->
         </div>
         <div class="credit"> Created by <span>ጫካ  የጉዞ ወኪል.</span></div>
     </section>

@@ -2,20 +2,16 @@
 function generateBookingCode() {
     return str_pad(mt_rand(1, 9999), 4, '0', STR_PAD_LEFT);
 }
-// Check if the package ID is passed in the URL
 if (isset($_GET['package_id'])) {
     $packageID = $_GET['package_id'];
 
-    // Database connection details
-    $host = "localhost"; // Your database host
+    $host = "localhost"; 
     $username = "root";
     $password = "";
     $database = "register";
 
-    // Create a database connection
     $conn = new mysqli($host, $username, $password, $database);
 
-    // Check the connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
@@ -35,7 +31,6 @@ if (isset($_GET['package_id'])) {
             $arrivals = $row['arrivals'];
             $leaving = $row['leaving'];
         } else {
-            // No booking data found
             $fullName = "Full Name Not Found";
             $location = "Location Not Found";
             $guests = "Guests Not Found";
@@ -43,14 +38,11 @@ if (isset($_GET['package_id'])) {
             $leaving = "Leaving Date Not Found";
         }
     } else {
-        // Handle the error
         echo "Error executing SQL query: " . $stmt->error;
     }
 
-    // Close the database connection
     $conn->close();
 } else {
-    // Package ID is missing
     echo "Package ID is missing.";
 }
 ?>

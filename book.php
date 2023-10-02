@@ -19,8 +19,8 @@
     <nav class="navbar">
         <a href="home.html">home</a>
         <a href="about.html">about</a>
-        <a href="package.html">package</a>
-        <a href="book.html">book</a>
+        <a href="package.php">package</a>
+        <a href="book.php">book</a>
     </nav>
     <div id="menu-btn" class="fas fa-bars"></div>
 </section>
@@ -32,6 +32,7 @@
 
     <section class="booking">
         <form method="post" action="booking.php" class="book-form">
+            
             <div class="flex">
                 <div class="inputBox">
                     <span>Full Name</span>
@@ -46,8 +47,12 @@
                     }
                     ?>
                     <input type="text" placeholder="Full Name" name="full_name" value="<?php echo $user_full_name; ?>">
-                    <span>Where to:</span>
-                    <input type="text" placeholder="Place you want to visit" name="location">
+                    <span>Package:</span>
+                    <?php
+                    // Check if the "package_title" query parameter is set in the URL
+                    $location = isset($_GET['package_title']) ? htmlspecialchars($_GET['package_title']) : '';
+                    ?>
+                    <input type="text" placeholder="Place you want to visit" name="location" value="<?php echo $location; ?>">
                 </div>
                 <div class="inputBox">
                     <span>How Many:</span>

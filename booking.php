@@ -72,19 +72,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare($insert_query);
     $stmt->bind_param("ssiss", $user_full_name, $location, $guests, $arrivals, $leaving);
 
-    if ($stmt->execute()) {
-        // Insertion was successful
-        echo "Booking successful!";
-    } else {
-        // Insertion failed
-        echo "Error: " . $stmt->error;
-    }
+   // ... (Your existing code for form handling)
 
-    // Close the database connection
-    $stmt->close();
+if ($stmt->execute()) {
+    // Insertion was successful
+    $_SESSION['user_id'] = $user_id; // Set the user_id session variable
+     $packageID = $stmt->insert_id; 
+    header("Location: thankyou.php?package_id=" . $packageID . "&package_title=" . $location . "&package_description=" . $guests);} else {
+    // Insertion failed
+    echo "Error: " . $stmt->error;
 }
 
-// Close the database connection
-$conn->close();
+$stmt->close();
+
+
+   
+}
+
 
 ?>

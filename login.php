@@ -36,8 +36,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             // Set the user's full name in the session
             $_SESSION["user_full_name"] = $row["full_name"];
-            
+             // Store user_id in the session
+        $_SESSION["user_id"] = $row["id"];
+        
             // Redirect to a dashboard or another page after successful login
+            
             header('Location: home.html');
             exit; // Important to terminate script execution after redirection
         } else {

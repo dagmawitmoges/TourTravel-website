@@ -17,6 +17,7 @@ if ($conn->connect_error) {
 $create_table_query = "CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     full_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL, 
     username VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL
 )";
@@ -30,6 +31,7 @@ if ($conn->query($create_table_query) === TRUE) {
 // Handle form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $full_name = $_POST["full_name"];
+    $email = $_POST["email"]; 
     $username = $_POST["username"];
     $password = password_hash($_POST["password"], PASSWORD_BCRYPT);
 
@@ -44,9 +46,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Username already exists. Please choose another.";
     } else {
         // Insert user data into the database
-        $insert_query = "INSERT INTO users (full_name, username, password) VALUES (?, ?, ?)";
+        $insert_query = "INSERT INTO users (full_name,email, username, password) VALUES (?, ?, ?,?)";
         $insert_stmt = $conn->prepare($insert_query);
-        $insert_stmt->bind_param("sss", $full_name, $username, $password);
+        $insert_stmt->bind_param("ssss", $full_name,$email, $username, $password);
 
         if ($insert_stmt->execute()) {
             echo "Registration successful. <a href='login.html'>Login</a>";

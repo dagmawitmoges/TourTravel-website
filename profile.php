@@ -150,7 +150,17 @@ $conn->close();
             
             <h2>Email:</h2>
             <p> <?php echo $email; ?> </p>
-            
+            <form method="post" action="update_profile.php">
+    <h2>Edit Profile</h2>
+    <label for="new_full_name">Full Name:</label>
+    <input type="text" id="new_full_name" name="new_full_name" value="<?php echo $full_name; ?>" required>
+    <br>
+    <label for="new_email">Email:</label>
+    <input type="email" id="new_email" name="new_email" value="<?php echo $email; ?>" required>
+    <br>
+    <button type="submit">Save Changes</button>
+</form>
+
            
         
 

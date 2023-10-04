@@ -7,18 +7,11 @@
     <title>Package</title>
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css"> <!-- Include your custom CSS file here -->
 </head>
 <body>
     <section class="header">
-        <a href="home.html" class="logo">Chaka tour and travel.</a>
-        <nav class="navbar">
-            <a href="home.html">home</a>
-            <a href="about.html">about</a>
-            <a href="package.php">package</a>
-            <a href="book.php">book</a> 
-        </nav>
-        <div id="menu-btn" class="fas fa-bars"></div>
+        <!-- Your header content here -->
     </section>
     <div class="heading" style="background:url(images/header-bg-.png) no-repeat">
         <h1>packages</h1>
@@ -37,13 +30,6 @@
             if ($conn->connect_error) {
                 die("Connection Failed: " . $conn->connect_error);
             }
-
-            $createTableQuery = "CREATE TABLE IF NOT EXISTS Packages (
-                ID INT AUTO_INCREMENT PRIMARY KEY,
-                Title VARCHAR(255) NOT NULL,
-                Description TEXT,
-                Image_path VARCHAR(255)
-            )";
 
             $sql = "SELECT * FROM Packages";
             $result = $conn->query($sql);
@@ -68,8 +54,6 @@
                     echo '<h3>' . $title . '</h3>';
                     echo '<p>' . $description . '</p>';
                     echo '<a href="book.php?package_title=' . urlencode($title)  . '" class="btn">Book Now</a>';
-                   
-
                     echo '</div>';
                     echo '</div>';
                 }
@@ -80,12 +64,9 @@
             $conn->close();
             ?>
         </div>
-        <div class="load-more"><span class="btn">Load More</span></div>
     </section>
     <section class="footer">
-        <div class="box-container">
-        </div>
-        <div class="credit"> Created by <span>ጫካ  የጉዞ ወኪል.</span></div>
+        <!-- Your footer content here -->
     </section>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
     <script src="js/script.js"></script>

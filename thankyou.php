@@ -30,6 +30,20 @@ if (isset($_GET['package_id'])) {
             $guests = $row['guests'];
             $arrivals = $row['arrivals'];
             $leaving = $row['leaving'];
+
+            $bookingCode = generateBookingCode();
+            $insert_query = "INSERT INTO book_form ( full_name, location, guests, arrivals, leaving, package_title, booking_code) VALUES ( ?, ?, ?, ?, ?, ?, ?)";
+            $insert_stmt = $conn->prepare($insert_query);
+            $insert_stmt->bind_param("ississss", $packageID, $fullName, $location, $guests, $arrivals, $leaving, $location, $bookingCode);
+
+            if ($insert_stmt->execute()) {
+                // Booking successful
+                echo "<script>alert('Booking Successful!');</script>";
+                header("Location: package.php"); 
+                exit();
+            } else {
+                echo "Error booking: " . $conn->error;
+            }
         } else {
             $fullName = "Full Name Not Found";
             $location = "Location Not Found";

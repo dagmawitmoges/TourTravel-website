@@ -13,7 +13,7 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["package_id"])) {
     $package_id = $_GET["package_id"];
 
-    // Perform package deletion
+   
     $deleteSql = "DELETE FROM Packages WHERE ID = ?";
     $deleteStmt = $conn->prepare($deleteSql);
     $deleteStmt->bind_param("i", $package_id);

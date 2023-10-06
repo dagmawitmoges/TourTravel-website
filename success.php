@@ -7,14 +7,14 @@ if (!isset($_SESSION["update_success"]) || $_SESSION["update_success"] !== true)
     exit();
 }
 
-// Clear the update_success session variable to avoid showing the message again
+
 unset($_SESSION["update_success"]);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Add your HTML and CSS for the success message here -->
+   
 </head>
 <body>
     <h1>Update Successful</h1>

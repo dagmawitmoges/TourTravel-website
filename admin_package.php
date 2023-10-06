@@ -33,7 +33,7 @@ function confirmDelete() {
 <div id="menu-btn" class="fas fa-bars"></div>
 
 </section>
-    <div class="heading" style="background:url(images/header-bg-.png) no-repeat">
+    <div class="heading" style="background:url(header-bg-2.png) no-repeat">
         <h1>packages</h1>
     </div>
     <section class="packages">

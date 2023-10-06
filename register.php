@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $password = password_hash($_POST["password"], PASSWORD_BCRYPT);
 
-    // Check if the username is already in use
+   
     $check_query = "SELECT * FROM users WHERE username = ?";
     $check_stmt = $conn->prepare($check_query);
     $check_stmt->bind_param("s", $username);

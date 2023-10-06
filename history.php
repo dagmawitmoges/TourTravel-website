@@ -32,7 +32,7 @@ if ($conn->query($sql) === TRUE) {
     echo "Error creating table: " . $conn->error . "<br>";
 }
 
-// Fetch data from the 'book_form' table
+
 $select_query = "SELECT * FROM book_form";
 $result = $conn->query($select_query);
 ?>
@@ -43,6 +43,7 @@ $result = $conn->query($select_query);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Booking Data</title>
     <style>
         table {
@@ -82,8 +83,7 @@ $result = $conn->query($select_query);
     <a href="about.html">about</a>
     <a href="package.php">package</a>
     <a href="book.php">book</a>
-  
-    <a href="Create_package.html"> <i class="fas fa-angle-right"></i> Settings</a>
+   <a href="Create_package.html"> <i class="fas fa-angle-right"></i> Settings</a>
     <a href="login.html">signin</a>
     <a href="profile.php" class="fas fa-user">  </a>
         

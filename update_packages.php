@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION["user_id"])) {
-  
+    // User is not logged in, redirect to the login page
     header("Location: login.php");
     exit();
 }
@@ -25,9 +25,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     
-    $update_query = "UPDATE packages SET Description=? WHERE Title=?";
+    $update_query = "UPDATE packages SET Description=?WHERE Title=?";
     $update_stmt = $conn->prepare($update_query);
-    $update_stmt->bind_param("ss", $description, $title);
+    $update_stmt->bind_param("sss", $description, $package_price, $title);
 
     if ($update_stmt->execute()) {
         // Update successful, you can redirect to a success page

@@ -4,10 +4,10 @@ $username = "root";
 $password = "";
 $database = "register";
 
-// Create a database connection
+
 $conn = new mysqli($hostname, $username, $password, $database);
 
-// Check the connection
+
 if ($conn->connect_error) {
     die("Connection Failed: " . $conn->connect_error);
 }
@@ -15,7 +15,7 @@ if ($conn->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["package_id"])) {
     $package_id = $_GET["package_id"];
 
-    // Fetch the package information
+    
     $sql = "SELECT * FROM Packages WHERE ID = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $package_id);
@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["newTitle"]) && isset($
     $newTitle = $_POST["newTitle"];
     $newDescription = $_POST["newDescription"];
 
-    // Update the existing package information in the database
+   
     $updateSql = "UPDATE Packages SET Title = ?, Description = ? WHERE ID = ?";
     $stmt = $conn->prepare($updateSql);
     
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["newTitle"]) && isset($
         
         if ($stmt->execute()) {
             echo "Package information updated successfully.";
-            // Update the values of $title and $description after successful update
+           
             $title = $newTitle;
             $description = $newDescription;
         } else {
@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["newTitle"]) && isset($
     }
 }
 
-// Close the database connection
+
 $conn->close();
 ?>
 

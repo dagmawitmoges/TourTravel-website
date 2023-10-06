@@ -6,7 +6,7 @@ function generateUniqueBookingCode($conn) {
     while ($codeExists) {
         $bookingCode = str_pad(mt_rand(1, 9999), 4, '0', STR_PAD_LEFT);
 
-        // Check if the generated code already exists in the database
+       
         $check_query = "SELECT COUNT(*) as count FROM book_form WHERE booking_code = ?";
         $stmt_check = $conn->prepare($check_query);
         $stmt_check->bind_param("s", $bookingCode);
@@ -16,7 +16,7 @@ function generateUniqueBookingCode($conn) {
         $count = $row['count'];
 
         if ($count == 0) {
-            $codeExists = false; // Unique code generated
+            $codeExists = false; 
         }
     }
 
@@ -34,7 +34,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Create the 'register' database if it doesn't exist
+
 $create_database_query = "CREATE DATABASE IF NOT EXISTS register";
 if ($conn->query($create_database_query) === TRUE) {
   
@@ -42,10 +42,10 @@ if ($conn->query($create_database_query) === TRUE) {
     echo "Error creating database: " . $conn->error;
 }
 
-// Select the 'register' database
+
 $conn->select_db($database);
 
-// Create the 'package' table if it doesn't exist
+
 $create_table_query = "CREATE TABLE IF NOT EXISTS package (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -62,21 +62,21 @@ if ($conn->query($create_table_query) === TRUE) {
 if (isset($_GET['package_id'])) {
     $packageID = $_GET['package_id'];
 
-    // Generate booking code
+    
     $bookingCode = generateUniqueBookingCode($conn);
 
-    // Insert the booking code into the 'book_form' table
+    
     $insert_booking_code_query = "UPDATE book_form SET booking_code = ? WHERE id = ?";
     $stmt_insert_code = $conn->prepare($insert_booking_code_query);
     $stmt_insert_code->bind_param("si", $bookingCode, $packageID);
     
     if ($stmt_insert_code->execute()) {
-        // Booking code inserted successfully
+       
     } else {
         echo "Error inserting booking code: " . $stmt_insert_code->error;
     }
 
-    // Fetch booking details from the 'book_form' table based on the package ID
+   
     $fetch_booking_query = "SELECT full_name, location, guests, arrivals, leaving FROM book_form WHERE id = ?";
     $stmt = $conn->prepare($fetch_booking_query);
     $stmt->bind_param("i", $packageID);

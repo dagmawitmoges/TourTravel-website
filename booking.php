@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $arrivals = $_POST["arrivals"];
     $leaving = $_POST["leaving"];
 
-    // Fetch user's full name from the users table based on their ID
+    
     if (isset($_SESSION['user_id'])) {
         $user_id = $_SESSION['user_id'];
         $fetch_full_name_query = "SELECT full_name FROM users WHERE id = ?";

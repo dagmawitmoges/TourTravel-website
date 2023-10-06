@@ -2,7 +2,6 @@
 
 session_start();
 
-// Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.html"); 
     exit();
@@ -30,7 +29,7 @@ if ($stmt->execute()) {
     $result = $stmt->get_result();
     if ($result->num_rows > 0) {
         
-        $row = $result->fetch_assoc();// Fetch user profile data
+        $row = $result->fetch_assoc();
         $full_name = $row['full_name'];
         $email = $row['email'];
     } else {
@@ -105,7 +104,7 @@ $conn->close();
 
            
 
-            <p><a href="logout.php">Logout</a></p> <!-- Provide a logout link to log out the user -->
+            <p><a href="logout.php">Logout</a></p> 
             <p><a href="home.html">Return to Home</a></p>
         </div>
         

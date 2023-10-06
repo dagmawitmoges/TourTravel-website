@@ -3,7 +3,6 @@ $session_timeout = 60;
 
 session_start();
 
-// Check if the user is logged in
 if (isset($_SESSION['username'])) {
     if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $session_timeout)) {
         session_unset();
@@ -16,7 +15,7 @@ if (isset($_SESSION['username'])) {
         exit; 
     }
 
-    // Update the last activity time
+
     $_SESSION['last_activity'] = time();
 } else {
     header('Location: login.html');

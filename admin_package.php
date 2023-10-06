@@ -18,22 +18,26 @@ function confirmDelete() {
 <body>
 <section class="header">
 
-<a href="home.html" class="logo">ጫካ </a>
+        <a href="admin_dashboard.html" class="logo">ጫካ </a>
 
-<nav class="navbar">
-    <a href="home.html">home</a>
-    <a href="about.html">about</a>
-    <a href="package.php">package</a>
-    <a href="book.php">book</a>
-    <a href="login.html">signin</a>
-    <a href="profile.php" class="fas fa-user">  </a>
-        
-</nav>
+        <nav class="navbar">
+            <a href="admin_dashboard.html">home</a>
+            <a href="admin_about.html">about</a>
+            <a href="admin_package.php">package</a>
+            
+           
+            <a href="history.php"> <i class="fas fa-angle-right"></i> History</a>
+            <a href="Create_package.html"> <i class="fas fa-angle-right"></i> Settings</a>
+            <a href="logout.html"><i class="fas fa-sign-out-alt"></i></a>
+            <a href="profile.php" class="fas fa-user">  </a>
 
-<div id="menu-btn" class="fas fa-bars"></div>
+                
+        </nav>
 
-</section>
-    <div class="heading" style="background:url(header-bg-2.png) no-repeat">
+        <div id="menu-btn" class="fas fa-bars"></div>
+
+    </section>
+    <div class="heading" style="background:url(header-bg-3.png) no-repeat">
         <h1>packages</h1>
     </div>
     <section class="packages">

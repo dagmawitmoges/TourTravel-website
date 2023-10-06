@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 </head>
 <body>
 <section class="header">
@@ -19,7 +21,7 @@
     <a href="about.html">about</a>
     <a href="package.php">package</a>
     <a href="book.php">book</a>
-    <a href="login.html">signin</a>
+    <a href="logout.html"><i class="fas fa-sign-out-alt"></i></a>
     <a href="profile.php" class="fas fa-user">  </a>
         
 </nav>

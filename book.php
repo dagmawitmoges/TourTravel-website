@@ -16,15 +16,21 @@
 <body>
 
 <section class="header">
-    <a href="home.html" class="logo">travel.</a>
-    <nav class="navbar">
-        <a href="home.html">home</a>
-        <a href="about.html">about</a>
-        <a href="package.php">package</a>
-        <a href="book.php">book</a>
-        <a href="profile.php" class="fas fa-user">  </a>
-    </nav>
-    <div id="menu-btn" class="fas fa-bars"></div>
+
+<a href="home.html" class="logo">ጫካ </a>
+
+<nav class="navbar">
+    <a href="home.html">home</a>
+    <a href="about.html">about</a>
+    <a href="package.php">package</a>
+    <a href="book.php">book</a>
+    <a href="logout.html"><i class="fas fa-sign-out-alt"></i></a>
+    <a href="profile.php" class="fas fa-user">  </a>
+        
+</nav>
+
+<div id="menu-btn" class="fas fa-bars"></div>
+
 </section>
 
 <div class="bookbody" style="background:url(images/nile.avif) no-repeat">

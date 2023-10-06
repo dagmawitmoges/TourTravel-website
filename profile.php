@@ -141,7 +141,7 @@ $conn->close();
    
     <div class="profile-container">
     <div class="avatar">
-            <!-- You can replace this with an actual user avatar -->
+          
             <span class='icon'>👤</span>
         </div>
         <div class="user-info">

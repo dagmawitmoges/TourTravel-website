@@ -73,7 +73,7 @@ if (!$result) {
                     echo '<h3>' . $title . '</h3>';
                     echo '<p>' . $description . '</p>';
                     echo '<p><strong>Price:</strong> $' . number_format($price, 2) . '</p>';
-                    echo '<a href="book.php?package_title=' . urlencode($title) . '&price=' . urlencode($price) . '" class="btn">Book Now</a>';
+                    echo '<a href="book.php?package_title=' . urlencode($title) . '&package_price=' . urlencode($price) . '" class="btn">Book Now</a>';
                     echo '</div>';
                     echo '</div>';
                 }

@@ -7,7 +7,7 @@ if (isset($_SESSION['user_full_name'])) {
     echo "User Full Name is not set.";
 }
 
-$host = "localhost"; 
+$host = "localhost";
 $username = "root";
 $password = "";
 $database = "register";
@@ -43,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $guests = $_POST["guests"];
     $arrivals = $_POST["arrivals"];
     $leaving = $_POST["leaving"];
+    $price = $_POST["price"]; // Retrieve the price from the form
 
     // Fetch user's full name from the users table based on their ID
     if (isset($_SESSION['user_id'])) {
@@ -66,10 +67,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     function generateUniqueBookingCode($conn) {
         $codeExists = true;
         $bookingCode = "";
-    
+
         while ($codeExists) {
             $bookingCode = str_pad(mt_rand(1, 9999), 4, '0', STR_PAD_LEFT);
-    
+
             // Check if the generated code already exists in the database
             $check_query = "SELECT COUNT(*) as count FROM booked_item WHERE booking_code = ?";
             $stmt_check = $conn->prepare($check_query);
@@ -78,29 +79,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $result = $stmt_check->get_result();
             $row = $result->fetch_assoc();
             $count = $row['count'];
-    
+
             if ($count == 0) {
                 $codeExists = false; // Unique code generated
             }
         }
-    
+
         return $bookingCode;
     }
 
     $bookingCode = generateUniqueBookingCode($conn);
 
-    $insert_query = "INSERT INTO book_form (full_name, location, guests, arrivals, leaving) VALUES (?, ?, ?, ?, ?)";
+    $insert_query = "INSERT INTO booked_item (user_id, full_name, location, guests, arrivals, leaving, booking_code) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($insert_query);
-    $stmt->bind_param("ssiss", $user_full_name, $location, $guests, $arrivals, $leaving);
+    $stmt->bind_param("issssss", $user_id, $full_name, $location, $guests, $arrivals, $leaving, $bookingCode);
 
     if ($stmt->execute()) {
-        $_SESSION['user_id'] = $user_id; 
         $packageID = $stmt->insert_id;
 
         // Store the booking details in the "booked_item" table
         $insert_booking_query = "INSERT INTO booked_item (user_id, package_id, full_name, location, guests, arrivals, leaving, booking_code) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt_booking = $conn->prepare($insert_booking_query);
-        $stmt_booking->bind_param("iissssss", $user_id, $packageID, $user_full_name, $location, $guests, $arrivals, $leaving, $bookingCode);
+        $stmt_booking->bind_param("iissssss", $user_id, $packageID, $full_name, $location, $guests, $arrivals, $leaving, $bookingCode);
 
         if ($stmt_booking->execute()) {
             header("Location: thankyou.php?package_id=" . $packageID . "&package_title=" . $location . "&package_description=" . $guests);
@@ -114,7 +114,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $stmt->close();
 }
-
-
-
 ?>

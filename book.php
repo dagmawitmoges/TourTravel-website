@@ -53,6 +53,12 @@
                     ?>
                     <input type="text" placeholder="Place you want to visit" name="location" value="<?php echo $location; ?>">
                     
+                    <!-- Add the input field for the price -->
+                    <span>Price:</span>
+                    <?php
+                    $price = isset($_GET['package_price']) ? htmlspecialchars($_GET['package_price']) : '';
+                    ?>
+<input type="text" placeholder="Price" name="price" value="<?php echo $price; ?>">
                 </div>
                 <div class="inputBox">
                     <span>How Many:</span>

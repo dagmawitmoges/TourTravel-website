@@ -46,7 +46,7 @@ $full_name = $_SESSION["full_name"];
         <nav class="navbar">
             <a href="admin_dashboard.html">home</a>
             <a href="about.html">about</a>
-            <a href="package.php">package</a>
+            <a href="admin_package.php">package</a>
             <a href="book.php">book</a>
            
             <a href="history.php"> <i class="fas fa-angle-right"></i> History</a>
@@ -191,27 +191,7 @@ $full_name = $_SESSION["full_name"];
             <a href="book.php" class="btn">book now</a>
         </div>
     </section>
-    <section class="admin-dashboard">
-        <!-- Add admin-specific content and features here -->
-        <h1>Welcome, Admin!</h1>
-        <!-- Add admin-related features, links, buttons, etc. -->
-
-        <!-- Editing options for packages -->
-        <h2>Edit Packages</h2>
-        <form action="update_packages.php" method="POST">
-            <!-- Add input fields for editing packages -->
-            <label for="package_name">Package Name:</label>
-            <input type="text" id="package_name" name="package_name" required><br>
-
-            <label for="package_description">Package Description:</label>
-            <textarea id="package_description" name="package_description" required></textarea><br>
-
-            <label for="package_price">Package Price:</label>
-            <input type="number" id="package_price" name="package_price" required><br>
-
-            <button type="submit">Update Package</button>
-        </form>
-    </section>
+   
 <section class="footer">
 
         <div class="box-container">

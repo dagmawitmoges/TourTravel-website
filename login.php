@@ -15,6 +15,7 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
+    $role = $_POST["role"]; 
 
     $check_query = "SELECT * FROM users WHERE username = ?";
     $check_stmt = $conn->prepare($check_query);
@@ -28,15 +29,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Store user information in the session
             $_SESSION["username"] = $username;
             
-            // Set the user's full name in the session
+           
             $_SESSION["user_full_name"] = $row["full_name"];
 
-             // Store user_id in the session
+            
         $_SESSION["user_id"] = $row["id"];
         
             
+        if ($row["role"] === "admin") {
+          
+            header('Location: admin_dashboard.php');
+        } else {
+           
             header('Location: home.html');
-            exit; 
+        }
+        exit; 
         } else {
             echo "Invalid password. Please try again.";
         }

@@ -68,7 +68,7 @@
                     echo '<h3>' . $title . '</h3>';
                     echo '<p>' . $description . '</p>';
                     echo '<a href="book.php?package_title=' . urlencode($title)  . '" class="btn">Book Now</a>';
-                    
+                    echo '<a href="edit_package.php?package_id=' . $row["ID"] . '">Edit</a>';
                     echo '</div>';
                     echo '</div>';
                 }

@@ -69,9 +69,66 @@ $conn->close();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Edit Package</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+        }
+
+        h1 {
+            font-size: 28px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        label {
+            font-size: 18px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+        }
+
+       
+    </style>
 </head>
 <body>
+<section class="header">
+
+<a href="admin_dashboard.html" class="logo">ጫካ </a>
+
+<nav class="navbar">
+    <a href="admin_dashboard.html">home</a>
+    <a href="admin_about.html">about</a>
+    <a href="admin_package.php">package</a>
+    
+   
+    <a href="history.php"> <i class="fas fa-angle-right"></i> History</a>
+    <a href="Create_package.html"> <i class="fas fa-angle-right"></i> Settings</a>
+    <a href="logout.html"><i class="fas fa-sign-out-alt"></i></a>
+    <a href="profile.php" class="fas fa-user">  </a>
+
+        
+</nav>
+
+<div id="menu-btn" class="fas fa-bars"></div>
+
+</section>
     <h1>Edit Package</h1>
     <form method="post">
         <label for="newTitle">Title:</label>

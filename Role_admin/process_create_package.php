@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("ssds", $title, $description, $price, $imagePath);
 
     if ($stmt->execute()) {
-        header("Location: package.php");
+        header("Location: admin_package.php");
         exit();
     } else {
         echo "Error creating package: " . $stmt->error;

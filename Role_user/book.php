@@ -24,7 +24,7 @@
     <a href="about.html">about</a>
     <a href="package.php">package</a>
     <a href="book.php">book</a>
-    <a href="logout.html"><i class="fas fa-sign-out-alt"></i></a>
+    <a href="logout.php"><i class="fas fa-sign-out-alt"></i></a>
     <a href="profile.php" class="fas fa-user">  </a>
         
 </nav>
@@ -33,7 +33,7 @@
 
 </section>
 
-<div class="bookbody" style="background:url(images/nile.avif) no-repeat">
+<div class="bookbody" style="background:url(images/header-bg-3.png) no-repeat">
     <div class="heading">
         <h1>Book Now</h1>
     </div>

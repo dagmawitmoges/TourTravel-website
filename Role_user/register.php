@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $insert_stmt->bind_param("ssss", $full_name,$email, $username, $password);
 
         if ($insert_stmt->execute()) {
-            echo "Registration successful. <a href='login.html'>Login</a>";
+            header('Location: login.html');
         } else {
             echo "Error during registration: " . $conn->error;
         }

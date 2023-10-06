@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION["username"] = $username;
         $_SESSION["user_full_name"] = "Admin";
         $_SESSION["is_admin"] = true;
-        header('Location: admin_dashboard.html');
+        header('Location: Role_admin/admin_dashboard.html');
         exit;
     }
 
@@ -50,10 +50,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION["is_admin"] = true;
                 
                
-                header('Location:admin/admin.php');
+                header('Location:Role_admin/admin_dashboard.html');
             } else {
                 
-                header('Location: home.php');
+                header('Location: Role_user/home.html');
             }
             exit; 
         } else {

@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["package_id"])) {
     $deleteStmt->bind_param("i", $package_id);
 
     if ($deleteStmt->execute()) {
-        echo "Package deleted successfully.";
+        header('Location: admin_package.php');
     } else {
         echo "Error deleting package: " . $conn->error;
     }

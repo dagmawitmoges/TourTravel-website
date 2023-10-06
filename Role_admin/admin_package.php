@@ -7,7 +7,7 @@
     <title>Package</title>
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css"> 
+    <link rel="stylesheet" href="/css/style.css"> 
     <script>
 function confirmDelete() {
     return confirm("Are you sure you want to delete this package?");
@@ -18,17 +18,17 @@ function confirmDelete() {
 <body>
 <section class="header">
 
-        <a href="admin_dashboard.html" class="logo">ጫካ </a>
+        <a href="Role_admin/admin_dashboard.html" class="logo">ጫካ </a>
 
         <nav class="navbar">
-            <a href="admin_dashboard.html">home</a>
-            <a href="admin_about.html">about</a>
-            <a href="admin_package.php">package</a>
+            <a href="Role_admin/admin_dashboard.html">home</a>
+            <a href="Role_admin/admin_about.html">about</a>
+            <a href="Role_admin/admin_package.php">package</a>
             
            
-            <a href="history.php"> <i class="fas fa-angle-right"></i> History</a>
-            <a href="Create_package.html"> <i class="fas fa-angle-right"></i> Settings</a>
-            <a href="logout.html"><i class="fas fa-sign-out-alt"></i></a>
+            <a href="Role_admin/history.php"> <i class="fas fa-angle-right"></i> History</a>
+            <a href="Role_admin/Create_package.html"> <i class="fas fa-angle-right"></i> Settings</a>
+            <a href="logout.php"><i class="fas fa-sign-out-alt"></i></a>
             <a href="profile.php" class="fas fa-user">  </a>
 
                 

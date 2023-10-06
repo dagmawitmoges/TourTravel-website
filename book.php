@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    
 </head>
 
 <body>
@@ -21,11 +22,12 @@
         <a href="about.html">about</a>
         <a href="package.php">package</a>
         <a href="book.php">book</a>
+        <a href="profile.php" class="fas fa-user">  </a>
     </nav>
     <div id="menu-btn" class="fas fa-bars"></div>
 </section>
 
-<div class="bookbody" style="background:url(images/gift-habeshaw--C5cJ41YPDg-unsplash.jpg) no-repeat">
+<div class="bookbody" style="background:url(images/nile.avif) no-repeat">
     <div class="heading">
         <h1>Book Now</h1>
     </div>
@@ -66,7 +68,7 @@
                     <input type="date" name="leaving">
                 </div>
             </div>
-            <button type="submit">Book</button>
+            <button type="submit" class="btn">Book</button>
             <h1 class="heading-title">Book Your Trip!</h1>
         </form>
     </section>

@@ -53,91 +53,30 @@ $conn->close();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile.css">
+
     <title>User Profile</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .profile-container {
-            background-color: #ffffff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            display: flex;
-            max-width: 600px;
-        }
-
-        .avatar {
-            flex: 0 0 auto;
-            width: 150px;
-            height: 150px;
-            background-color: #007BFF;
-            color: #ffffff;
-            border-radius: 50%;
-            font-size: 48px;
-            display: flex;
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
-            margin-right: 8px;
-            margin-top: 50px;
-            margin-left:10px;
-        }
-
-        .avatar img {
-            max-width: 100%;
-            max-height: 100%;
-            border-radius: 50%;
-        }
-
-        .user-info {
-            flex: 2;
-            padding: 20px;
-        }
-
-        h1 {
-            font-size: 32px;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        h2 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
-
-        p {
-            font-size: 18px;
-            color: #555;
-            margin-bottom: 20px;
-        }
-
-        a {
-            text-decoration: none;
-            color: #007BFF;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-
-        a:hover {
-            color: #0056b3;
-        }
-
-        .logout {
-            margin-top: 20px;
-        }
-    </style>
+    
 </head>
 <body>
+<section class="header">
+
+<a href="home.html" class="logo">ጫካ </a>
+
+<nav class="navbar">
+    <a href="home.html">home</a>
+    <a href="about.html">about</a>
+    <a href="package.php">package</a>
+    <a href="book.php">book</a>
+ <a href="profile.php" class="fas fa-user">  </a>        
+</nav>
+
+<div id="menu-btn" class="fas fa-bars"></div>
+
+</section>
    
     <div class="profile-container">
     <div class="avatar">

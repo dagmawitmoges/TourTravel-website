@@ -27,7 +27,7 @@
 <div id="menu-btn" class="fas fa-bars"></div>
 
 </section>
-    <div class="heading" style="background:url(images/header-bg-.png) no-repeat">
+    <div  class="heading" style="background:url(images/header-bg-2.png) no-repeat">
         <h1>packages</h1>
     </div>
     <section class="packages">
@@ -67,6 +67,7 @@
                     echo '<div class="content">';
                     echo '<h3>' . $title . '</h3>';
                     echo '<p>' . $description . '</p>';
+                    echo '<p>Price: $' . number_format($row["Price"], 2) . '</p>'; 
                     echo '<a href="book.php?package_title=' . urlencode($title)  . '" class="btn">Book Now</a>';
                     
                     echo '</div>';

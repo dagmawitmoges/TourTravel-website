@@ -15,9 +15,9 @@
 <body>
 
 <section class="header">
-    <a href="home.html" class="logo">travel.</a>
+    <a href="home.php" class="logo">travel.</a>
     <nav class="navbar">
-        <a href="home.html">home</a>
+        <a href="home.php">home</a>
         <a href="about.html">about</a>
         <a href="package.php">package</a>
         <a href="book.php">book</a>
@@ -52,6 +52,7 @@
                     $location = isset($_GET['package_title']) ? htmlspecialchars($_GET['package_title']) : '';
                     ?>
                     <input type="text" placeholder="Place you want to visit" name="location" value="<?php echo $location; ?>">
+                    
                 </div>
                 <div class="inputBox">
                     <span>How Many:</span>
@@ -61,7 +62,7 @@
                     <span>Arrival Date:</span>
                     <input  type="date" name="arrivals" required>
                 </div>
-                <div class="inputBox">
+                <div class="inputBox" required>
                     <span>Leaving Date:</span>
                     <input type="date" name="leaving">
                 </div>

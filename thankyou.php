@@ -1,7 +1,4 @@
 <?php
-function generateBookingCode() {
-    return str_pad(mt_rand(1, 9999), 4, '0', STR_PAD_LEFT);
-}
 if (isset($_GET['package_id'])) {
     $packageID = $_GET['package_id'];
 
@@ -15,9 +12,9 @@ if (isset($_GET['package_id'])) {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    $bookingCode = generateBookingCode();
-    // Fetch booking details from the 'book_form' table based on the package ID
-    $fetch_booking_query = "SELECT full_name, location, guests, arrivals, leaving FROM book_form WHERE id = ?";
+
+    // Fetch booking details and booking code from the "booked_item" table based on the package ID
+    $fetch_booking_query = "SELECT full_name, location, guests, arrivals, leaving, booking_code FROM booked_item WHERE package_id = ?";
     $stmt = $conn->prepare($fetch_booking_query);
     $stmt->bind_param("i", $packageID);
 
@@ -30,12 +27,14 @@ if (isset($_GET['package_id'])) {
             $guests = $row['guests'];
             $arrivals = $row['arrivals'];
             $leaving = $row['leaving'];
+            $bookingCode = $row['booking_code'];
         } else {
             $fullName = "Full Name Not Found";
             $location = "Location Not Found";
             $guests = "Guests Not Found";
             $arrivals = "Arrival Date Not Found";
             $leaving = "Leaving Date Not Found";
+            $bookingCode = "Booking Code Not Found";
         }
     } else {
         echo "Error executing SQL query: " . $stmt->error;
@@ -60,31 +59,24 @@ if (isset($_GET['package_id'])) {
             background-color: #f5f5f5;
             margin: 0;
             padding: 0;
-            
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: 'gray';
+            background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 50vh; 
+            min-height: 100vh;
         }
 
         h1 {
             font-size: 24px;
             color: #333;
-            margin-bottom: 20px;
-        }
-
-        p {
-            font-size: 18px;
-            color: #555;
             margin-bottom: 20px;
         }
 
@@ -99,14 +91,10 @@ if (isset($_GET['package_id'])) {
             margin-bottom: 10px;
         }
 
-        a {
-            text-decoration: none;
-            color: #007BFF;
+        strong {
+            font-weight: bold;
         }
 
-        a:hover {
-            text-decoration: underline;
-        }
         #print-button {
             background-color: #007BFF;
             color: #fff;
@@ -122,22 +110,20 @@ if (isset($_GET['package_id'])) {
     </style>
 </head>
 <body>
-    <div class='container' >
-    <h1>Thank you for your booking!</h1>
-    <p>Your booking details:</p>
-    <ul id="print-container">
-       
-    <li><strong>Full Name:</strong> <?php echo $fullName; ?></li>
+    <div class="container">
+        <h1>Thank you for your booking!</h1>
+        <ul id="print-container">
+            <li><strong>Full Name:</strong> <?php echo $fullName; ?></li>
             <li><strong>Location:</strong> <?php echo $location; ?></li>
             <li><strong>Number of Guests:</strong> <?php echo $guests; ?></li>
             <li><strong>Arrival Date:</strong> <?php echo $arrivals; ?></li>
             <li><strong>Leaving Date:</strong> <?php echo $leaving; ?></li>
             <li><strong>Booking Code:</strong> <?php echo $bookingCode; ?></li>
-    </ul>
-    <p><a href="home.html">Return to Home</a></p>
-    <button id="print-button" onclick="printPage()">Print</button>
+        </ul>
+        <button id="print-button" onclick="printPage()">Print</button>
+        <a href="home.php"><strong>Back to the Home Page</strong></a>
     </div>
-    
+
     <script>
         function printPage() {
             var printContents = document.getElementById("print-container").innerHTML;
@@ -146,7 +132,6 @@ if (isset($_GET['package_id'])) {
             window.print();
             document.body.innerHTML = originalContents;
         }
-
     </script>
 </body>
 </html>

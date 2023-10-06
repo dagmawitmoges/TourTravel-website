@@ -141,7 +141,7 @@ $conn->close();
    
     <div class="profile-container">
     <div class="avatar">
-            <!-- You can replace this with an actual user avatar -->
+  
             <span class='icon'>👤</span>
         </div>
         <div class="user-info">
@@ -156,8 +156,8 @@ $conn->close();
 
            
 
-            <p><a href="logout.php">Logout</a></p> <!-- Provide a logout link to log out the user -->
-            <p><a href="home.html">Return to Home</a></p>
+            <p><a href="logout.php">Logout</a></p> 
+            <p><a href="home.php">Return to Home</a></p>
         </div>
         
     </div>

@@ -1,5 +1,5 @@
 <?php
-$session_timeout = 60; 
+$session_timeout = 120; 
 
 session_start();
 
@@ -10,7 +10,7 @@ if (isset($_SESSION['username'])) {
         session_destroy();
 
         $message = "Your session has expired. Please sign in again.";
-        setcookie('session_message', $message, time() + 60, '/'); 
+        setcookie('session_message', $message, time() + 120, '/'); 
 
         header('Location: ' . $_SERVER['PHP_SELF']);
         exit; 

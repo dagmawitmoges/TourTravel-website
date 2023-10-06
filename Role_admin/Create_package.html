@@ -8,23 +8,23 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css"> 
-    <link rel="stylesheet" href="/css/setting.css">
+    <link rel="stylesheet" href="../css/setting.css">
 </head>
 <body>
     <section class="header">
 
-        <a href="admin_dashboard.html" class="logo">ጫካ </a>
+        <a href="./admin_dashboard.html" class="logo">ጫካ </a>
 
         <nav class="navbar">
-            <a href="admin_dashboard.html">home</a>
-            <a href="about.html">about</a>
-            <a href="admin_package.php">package</a>
+            <a href="./admin_dashboard.html">home</a>
+            <a href="../Role_user/about.html">about</a>
+            <a href="./admin_package.php">package</a>
             
            
             <a href="history.php"> <i class="fas fa-angle-right"></i> History</a>
             <a href="Create_package.html"> <i class="fas fa-angle-right"></i> Settings</a>
-            <a href="logout.php"><i class="fas fa-sign-out-alt"></i></a>
-            <a href="profile.php" class="fas fa-user">  </a>
+            <a href="../logout.php"><i class="fas fa-sign-out-alt"></i></a>
+            <a href="../Role_user/profile.php" class="fas fa-user">  </a>
 
                 
         </nav>
@@ -32,11 +32,11 @@
         <div id="menu-btn" class="fas fa-bars"></div>
 
     </section>
-    <div class="heading" style="background:url(images/header-bg-3.png) no-repeat">
+    <div class="heading" style="background:url(../images/header-bg-3.png) no-repeat">
         <h1>Create a New Package</h1>
     </div>
     <section class="create-package">
-        <form action="process_create_package.php" method="POST" enctype="multipart/form-data">
+        <form action="./process_create_package.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="title">Title:</label>
                 <input type="text" id="title" name="title" required>
@@ -64,9 +64,9 @@
 
             <div class="box">
                 <h3>quick links</h3>
-                <a href="home.html"> <i class="fas fa-angle-right"></i> home</a>
-                <a href="about.html"> <i class="fas fa-angle-right"></i> about</a>
-                <a href="package.php"> <i class="fas fa-angle-right"></i> package</a>
+                <a href="./admin_dashboard.html"> <i class="fas fa-angle-right"></i> home</a>
+                <a href="../Role_user/about.html"> <i class="fas fa-angle-right"></i> about</a>
+                <a href="./Create_package.html"> <i class="fas fa-angle-right"></i> package</a>
                 <a href="book.html"> <i class="fas fa-angle-right"></i> book</a>
             </div>
 

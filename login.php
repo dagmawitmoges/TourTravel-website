@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header('Location:Role_admin/admin_dashboard.html');
             } else {
                 
-                header('Location: Role_user/home.html');
+                header('Location:Role_user/home.html');
             }
             exit; 
         } else {

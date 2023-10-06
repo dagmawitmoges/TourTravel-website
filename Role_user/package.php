@@ -21,7 +21,7 @@
     <a href="about.html">about</a>
     <a href="package.php">package</a>
     <a href="book.php">book</a>
-    <a href="logout.html"><i class="fas fa-sign-out-alt"></i></a>
+    <a href="../logout.html"><i class="fas fa-sign-out-alt"></i></a>
     <a href="profile.php" class="fas fa-user">  </a>
         
 </nav>

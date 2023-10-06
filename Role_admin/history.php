@@ -42,7 +42,7 @@ $result = $conn->query($select_query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <title>Booking Data</title>
     <style>
@@ -86,8 +86,8 @@ $result = $conn->query($select_query);
            
             <a href="history.php"> <i class="fas fa-angle-right"></i> History</a>
             <a href="Create_package.html"> <i class="fas fa-angle-right"></i> Settings</a>
-            <a href="logout.html"><i class="fas fa-sign-out-alt"></i></a>
-            <a href="profile.php" class="fas fa-user">  </a>
+            <a href="../Role_user/logout.html"><i class="fas fa-sign-out-alt"></i></a>
+            <a href="../Role_user/profile.php" class="fas fa-user">  </a>
 
                 
         </nav>

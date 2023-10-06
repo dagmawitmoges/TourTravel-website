@@ -69,7 +69,7 @@ $conn->close();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <title>Edit Package</title>
     <style>
         body {
@@ -118,8 +118,8 @@ $conn->close();
     <a href="admin_package.php">package</a>
     
    
-    <a href="history.php"> <i class="fas fa-angle-right"></i> History</a>
-    <a href="Create_package.html"> <i class="fas fa-angle-right"></i> Settings</a>
+    <a href="./history.php"> <i class="fas fa-angle-right"></i> History</a>
+    <a href="./Create_package.html"> <i class="fas fa-angle-right"></i> Settings</a>
     <a href="logout.html"><i class="fas fa-sign-out-alt"></i></a>
     <a href="profile.php" class="fas fa-user">  </a>
 

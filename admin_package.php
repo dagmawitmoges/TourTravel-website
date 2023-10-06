@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="css/style.css"> 
+    <script>
+function confirmDelete() {
+    return confirm("Are you sure you want to delete this package?");
+}
+</script>
+
 </head>
 <body>
 <section class="header">
@@ -70,6 +76,10 @@
                  
                     
                      echo '<a href="edit_package.php?package_id=' . $row["ID"] . '" class="btn">Edit</a>';
+                  
+                     echo '<a href="delete_package.php?package_id=' . $row["ID"] . '" class="btn2" onclick="return confirmDelete();">Delete</a>';
+
+
                     echo '</div>';
                     echo '</div>';
                 }

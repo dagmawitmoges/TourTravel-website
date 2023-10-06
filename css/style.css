@@ -77,7 +77,16 @@ section {
     padding: 1rem 3rem;
     cursor: pointer;
 }
+.btn2 {
+    display: inline-block;
+    background: red;
+    margin-top: 1rem;
+    color: var(--white);
+    font-size: 1.7rem;
+    padding: 1rem 3rem;
+    cursor: pointer;
 
+}
 .btn:hover {
     background: var(--main-color);
 }
